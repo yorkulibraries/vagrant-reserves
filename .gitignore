@@ -1,0 +1,5 @@
+.vagrant
+roles/external
+ansible-rails
+reserves
+inventory
