@@ -1,0 +1,14 @@
+test:
+  :alma_api_key: {{ alma_api_key }}
+  :primo_api_key: {{ primo_api_key }}
+  :worldcat_api_key: {{ worldcat_api_key }}
+
+development:
+  :alma_api_key: {{ alma_api_key }}
+  :primo_api_key: {{ primo_api_key }}
+  :worldcat_api_key: {{ worldcat_api_key }}
+
+production:
+  :alma_api_key: {{ alma_api_key }}
+  :primo_api_key: {{ primo_api_key }}
+  :worldcat_api_key: {{ worldcat_api_key }}
