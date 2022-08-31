@@ -36,19 +36,13 @@
     become: yes
     become_user: "{{ app }}"
 
-  - name: add Basic Auth to apache config
+  - name: add extra apache config to apache
     blockinfile:
       path: "/etc/apache2/sites-available/{{ app }}.{{ app_domain }}.conf"
-      insertbefore: "</VirtualHost>"
-      block: "{{ lookup('file', 'templates/apache_auth_basic') }}"
+      insertafter: "CustomLog"
+      block: "{{ lookup('file', 'templates/apache.conf') }}"
     notify: restart apache2
-
-  - name: add Basic Auth to apache config ssl
-    blockinfile:
-      path: "/etc/apache2/sites-available/{{ app }}.{{ app_domain }}-ssl.conf"
-      insertbefore: "</VirtualHost>"
-      block: "{{ lookup('file', 'templates/apache_auth_basic') }}"
-    notify: restart apache2
+    when: extra_apache_conf
 
   - name: install python3-passlib
     apt:
