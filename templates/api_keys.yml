@@ -1,14 +1,29 @@
 test:
-  :alma_api_key: {{ alma_api_key }}
-  :primo_api_key: {{ primo_api_key }}
-  :worldcat_api_key: {{ worldcat_api_key }}
+  :alma_api_key: {{ alma_api_key | default('') }}
+  :alma_region: {{ alma_region | default('https://api-ca.hosted.exlibrisgroup.com') }}
+  :primo_api_key: {{ primo_api_key | default('') }}
+  :primo_inst: {{ primo_inst | default('') }}
+  :primo_vid: {{ primo_vid | default('') }}
+  :primo_region: {{ primo_region | default('https://api-ca.hosted.exlibrisgroup.com') }}
+  :primo_scope: {{ primo_scope | default('MyInst_and_CI') }}
+  :worldcat_api_key: {{ worldcat_api_key | default('') }}
 
 development:
-  :alma_api_key: {{ alma_api_key }}
-  :primo_api_key: {{ primo_api_key }}
-  :worldcat_api_key: {{ worldcat_api_key }}
+  :alma_api_key: {{ alma_api_key | default('') }}
+  :alma_region: {{ alma_region | default('https://api-ca.hosted.exlibrisgroup.com') }}
+  :primo_api_key: {{ primo_api_key | default('') }}
+  :primo_inst: {{ primo_inst | default('') }}
+  :primo_vid: {{ primo_vid | default('') }}
+  :primo_region: {{ primo_region | default('https://api-ca.hosted.exlibrisgroup.com') }}
+  :primo_scope: {{ primo_scope | default('MyInst_and_CI') }}
+  :worldcat_api_key: {{ worldcat_api_key | default('') }}
 
 production:
-  :alma_api_key: {{ alma_api_key }}
-  :primo_api_key: {{ primo_api_key }}
-  :worldcat_api_key: {{ worldcat_api_key }}
+  :alma_api_key: {{ alma_api_key | default('') }}
+  :alma_region: {{ alma_region | default('https://api-ca.hosted.exlibrisgroup.com') }}
+  :primo_api_key: {{ primo_api_key | default('') }}
+  :primo_inst: {{ primo_inst | default('') }}
+  :primo_vid: {{ primo_vid | default('') }}
+  :primo_region: {{ primo_region | default('https://api-ca.hosted.exlibrisgroup.com') }}
+  :primo_scope: {{ primo_scope | default('MyInst_and_CI') }}
+  :worldcat_api_key: {{ worldcat_api_key | default('') }}

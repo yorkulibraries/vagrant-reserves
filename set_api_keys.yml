@@ -10,19 +10,16 @@
       file: "{{ apikeys | default('vars/api_keys.yml') }}"
 
   - block:
+    - name: create /home/{{ app }}/{{ app }}/config/api_keys.yml
+      template:
+        src: templates/api_keys.yml
+        dest: "/home/{{ app }}/{{ app }}/config/api_keys.yml"
 
     - name: rake app:set_api_keys
       shell: WORLDCAT_API_KEY="{{ worldcat_api_key  | default('worldcat_api_key_not_set') }}" ALMA_API_KEY="{{ alma_api_key  | default('alma_api_key_not_set') }}" PRIMO_API_KEY="{{ primo_api_key  | default('primo_api_key_not_set') }}" RAILS_ENV={{ rails_env  | default('development') }} /home/{{ app }}/.rbenv/shims/bundle exec rake app:set_alma_api_key
       args:
         chdir: /home/{{ app }}/{{ app }}
       register: rake_app_set_api_keys
-      notify: "restart {{ app }}"
-
-    - name: create /home/{{ app }}/{{ app }}/config/api_keys.yml
-      template:
-        src: templates/api_keys.yml
-        dest: "/home/{{ app }}/{{ app }}/config/api_keys.yml"
-
 
     become: yes
     become_user: "{{ app }}"
