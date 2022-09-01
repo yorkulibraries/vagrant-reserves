@@ -38,7 +38,7 @@
 
   - name: add extra apache config to apache
     blockinfile:
-      path: "/etc/apache2/sites-available/{{ app }}.{{ app_domain }}.conf"
+      path: "/etc/apache2/sites-available/{{ vhost }}.conf"
       insertafter: "CustomLog"
       block: "{{ lookup('file', 'templates/apache.conf') }}"
     notify: restart apache2

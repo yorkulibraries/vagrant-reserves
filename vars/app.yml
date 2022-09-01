@@ -6,3 +6,4 @@ rails_env: development
 repo_branch: master 
 repo: https://github.com/yorkulibraries/reserves.git
 extra_apache_conf: true
+vhost: "{{ app }}.{{ app_domain }}"
