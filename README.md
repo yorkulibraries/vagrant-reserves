@@ -116,7 +116,7 @@ me    ansible_host=192.168.168.168
 me
 ```
 
-Install Mysql and Reserves on the target server
+Install Mysql and Reserves on the target server using Port 3006, with user reserve UID/GID 3006
 
 ```
 ansible-playbook --ask-vault-pass -i inventory app_provision.yml -e"puma_port=3006 app=reserves rails_env=production app_domain=library.yorku.ca mysql_root_password=db_root_password mysql_host=localhost mysql_user=reserves mysql_password=reserves_db_password use_local_mysql=true apikeys=vars/yul_keys.yml" --limit me
