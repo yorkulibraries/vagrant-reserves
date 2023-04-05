@@ -119,7 +119,7 @@ me
 Install Mysql and Reserves on the target server
 
 ```
-ansible-playbook -i inventory app_provision.yml -e"rails_env=production app_domain=yourdomain.ca mysql_root_password=db_root_password mysql_host=localhost mysql_user=reserves mysql_password=reserves_db_password" --limit me 
+ansible-playbook --ask-vault-pass -i inventory app_provision.yml -e"puma_port=3006 app=reserves rails_env=production app_domain=library.yorku.ca mysql_root_password=db_root_password mysql_host=localhost mysql_user=reserves mysql_password=reserves_db_password use_local_mysql=true apikeys=vars/yul_keys.yml" --limit me
 ```
 
 ## About Reserves
