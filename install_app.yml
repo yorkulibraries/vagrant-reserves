@@ -14,11 +14,6 @@
 
   - block:
 
-    - name: create /home/{{ app }}/{{ app }}/config/api_keys.yml
-      template:
-        src: templates/api_keys.yml
-        dest: "/home/{{ app }}/{{ app }}/config/api_keys.yml"
-
     - name: stat "/home/{{ app }}/{{ app }}/config/secrets.yml" 
       stat:
         path: "/home/{{ app }}/{{ app }}/config/secrets.yml"
@@ -37,6 +32,12 @@
         dest:  /home/{{ app }}/{{ app }}
         state: link
       when: rails_env != 'production' and not app_secrets_yml.stat.exists
+
+    - name: create /home/{{ app }}/{{ app }}/config/api_keys.yml
+      template:
+        src: templates/api_keys.yml
+        dest: "/home/{{ app }}/{{ app }}/config/api_keys.yml"
+
 
     become: yes
     become_user: "{{ app }}"
